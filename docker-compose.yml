@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  postgres:
+    container_name: best_time_postgres
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: best_time_admin
+      POSTGRES_PASSWORD: u@vG$!480ObF
+      POSTGRES_DB: best_time
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
