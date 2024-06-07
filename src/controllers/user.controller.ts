@@ -18,6 +18,7 @@ import UserCreationRequest from '../domain/dtos/user/requests/user-creation.requ
 import UserContextRequest from '../domain/dtos/user/requests/user-payload.request';
 import { ClientAuthMiddleware } from '../infrastructure/middlewares/client-auth.middleware';
 import UserFindingPagedRequest from '../domain/dtos/user/requests/user-finding-paged.request';
+import UserUpdateRequest from '../domain/dtos/user/requests/user-update.request';
 
 @controller('/users')
 export class UserController extends BaseHttpController {
@@ -59,7 +60,7 @@ export class UserController extends BaseHttpController {
   @httpPut('/:id', AdminAuthMiddleware)
   public async update(
     @requestParam('id') id: string,
-    @requestBody() request: UserCreationRequest,
+    @requestBody() request: UserUpdateRequest,
   ): Promise<IHttpActionResult> {
     const response = await this.userService.update(id, request);
     return this.json(response, 200);
